@@ -41,7 +41,6 @@ public class Person {
         this.age = age;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -49,7 +48,6 @@ public class Person {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public String getName() {
         return name;

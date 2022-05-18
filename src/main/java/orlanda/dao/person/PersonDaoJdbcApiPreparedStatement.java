@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class PersonDaoJdbcApiPreparedStatement implements PersonDaoInterface {
+public class PersonDaoJdbcApiPreparedStatement implements PersonDao {
 
     //    @Value("${db.url}")
     private static final String URL = "jdbc:mysql://localhost:3306/spring_app_db";
@@ -33,6 +33,7 @@ public class PersonDaoJdbcApiPreparedStatement implements PersonDaoInterface {
         }
     }
 
+    @Override
     public List<Person> getAll() {
         List<Person> people = new ArrayList<>();
         try {
@@ -57,6 +58,8 @@ public class PersonDaoJdbcApiPreparedStatement implements PersonDaoInterface {
 
         return people;
     }
+
+    @Override
     public Person getById(int id) {
         Person person = null;
         try {
@@ -83,6 +86,7 @@ public class PersonDaoJdbcApiPreparedStatement implements PersonDaoInterface {
     }
 
 
+    @Override
     public void save(Person person) {
         try {
             String SQL = "insert into person(name, age, email) values (?, ?, ?)";
@@ -98,6 +102,8 @@ public class PersonDaoJdbcApiPreparedStatement implements PersonDaoInterface {
         }
     }
 
+
+    @Override
     public void update(int id, Person person) {
         try {
             String SQL = "update person set name = ?, age = ?, email = ? where id = ?";
@@ -113,6 +119,7 @@ public class PersonDaoJdbcApiPreparedStatement implements PersonDaoInterface {
         }
     }
 
+    @Override
     public void delete(int id) {
         try {
             String SQL = "delete from person where id = ?";

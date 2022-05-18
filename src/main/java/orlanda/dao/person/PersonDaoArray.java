@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class PersonDaoArray implements PersonDaoInterface {
+public class PersonDaoArray implements PersonDao {
 
     private List<Person> people;
 

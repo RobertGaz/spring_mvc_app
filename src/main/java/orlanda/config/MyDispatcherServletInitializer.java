@@ -24,6 +24,8 @@ public class MyDispatcherServletInitializer extends AbstractAnnotationConfigDisp
         return new String[] {"/"};
     }
 
+
+    // фильтр для упаковывания запросов PATCH и DELETE в POST
     public void onStartup(ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);
         registerHiddenFieldFilter(aServletContext);

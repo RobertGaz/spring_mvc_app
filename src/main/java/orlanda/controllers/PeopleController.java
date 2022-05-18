@@ -6,33 +6,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import orlanda.dao.person.PersonDaoInterface;
+import orlanda.dao.person.PersonDao;
 import orlanda.models.Person;
 
 import javax.validation.Valid;
-import java.io.File;
 
 @Controller
 @RequestMapping("/people")
 public class PeopleController {
 
     @Autowired
-    @Qualifier("personDaoJdbcTemplate")
-    PersonDaoInterface personDAO;
+    @Qualifier("personDaoArray")
+    PersonDao personDAO;
 
     @GetMapping()
     public String index(Model model) {
-        System.out.print(new File("").getAbsolutePath());
         model.addAttribute("people", personDAO.getAll());
-
         return "people/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable int id, Model model) {
-
         model.addAttribute("person", personDAO.getById(id));
-
         return "people/person";
     }
 
@@ -60,7 +55,7 @@ public class PeopleController {
     @PatchMapping("/{id}")
     public String update(@PathVariable int id, @ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "people/"+id+"/edit_person";
+            return "people/edit_person";
 
         personDAO.update(id, person);
         return "redirect:/people";

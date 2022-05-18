@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.List;
 
 @Component
-public class PersonDaoJdbcTemplate implements PersonDaoInterface {
+public class PersonDaoJdbcTemplate implements PersonDao {
 
     class PersonMapper implements RowMapper<Person> {
         @Override
@@ -28,26 +28,31 @@ public class PersonDaoJdbcTemplate implements PersonDaoInterface {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    @Override
     public List<Person> getAll() {
         return jdbcTemplate.query("select * from person", new PersonMapper());
     }
+
+    @Override
     public Person getById(int id) {
         return jdbcTemplate.query("select * from person where id = ? ", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class))
                 .stream().findAny().orElse(null);
     }
 
-
+    @Override
     public void save(Person person) {
         jdbcTemplate.update("insert into person(name, age,email) values (?, ?, ?)",
                 person.getName(), person.getAge(), person.getEmail());
 
     }
 
+    @Override
     public void update(int id, Person person) {
         jdbcTemplate.update("update person set name = ?, age = ?, email=? where id = ?",
                 person.getName(), person.getAge(), person.getEmail(), person.getId());
     }
 
+    @Override
     public void delete(int id) {
         jdbcTemplate.update("delete from person where id = ?", id);
     }

@@ -4,7 +4,7 @@ import orlanda.models.Person;
 
 import java.util.List;
 
-public interface PersonDaoInterface {
+public interface PersonDao {
     List<Person> getAll();
 
     Person getById(int id);
