@@ -4,4 +4,7 @@ create table person (
     age integer,
     email varchar(50),
     primary key (id)
-)
+);
+
+insert into person (name, age)
+values ("Robert", 23), ("Rustam", 24), ("Alina", 24)

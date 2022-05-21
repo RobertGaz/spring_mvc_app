@@ -1,7 +1,10 @@
 package orlanda.models;
 
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
+@Entity
+@Table
 public class Person {
     public Person() {
 
@@ -20,17 +23,23 @@ public class Person {
         this.email = other.email;
     }
 
+    @Column(name="id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotEmpty(message="Name shouldn't be empty")
     @Size(min=2, max=30, message="Incorrect name size")
+    @Column(name="name")
     private String name;
 
     @Min(value=0, message="Invalid age")
+    @Column(name="age")
     private int age;
 
     @NotEmpty(message="E-mail shouldn't be empty")
     @Email(message="Invalid e-mail")
+    @Column(name="email")
     private String email;
 
     public int getAge() {

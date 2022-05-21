@@ -16,7 +16,7 @@ import javax.validation.Valid;
 public class PeopleController {
 
     @Autowired
-    @Qualifier("personDaoArray")
+    @Qualifier("hibernateDao")
     PersonDao personDAO;
 
     @GetMapping()
