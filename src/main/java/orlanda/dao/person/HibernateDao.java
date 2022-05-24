@@ -16,14 +16,14 @@ public class HibernateDao implements PersonDao {
     private SessionFactory sessionFactory;
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Person> getAll() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from Person").list();
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Person getById(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Person.class, id);

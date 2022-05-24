@@ -2,6 +2,7 @@ package orlanda.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -42,6 +43,9 @@ public class Person {
     @Column(name="email")
     private String email;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Item> items;
+
     public int getAge() {
         return age;
     }
@@ -72,5 +76,13 @@ public class Person {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }
