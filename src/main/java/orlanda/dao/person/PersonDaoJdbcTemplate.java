@@ -37,6 +37,8 @@ public class PersonDaoJdbcTemplate implements PersonDao {
 
     @Override
     public Person getById(int id) {
+        // если названия столбцов и полей класса одинаковые, можем не создавать
+        // свой PersonMapper, а использовать BeanPropertyRowMapper
         return jdbcTemplate.query("select * from person where id = ? ", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class))
                 .stream().findAny().orElse(null);
     }

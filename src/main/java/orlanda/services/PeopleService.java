@@ -40,6 +40,8 @@ public class PeopleService {
     }
 
     public void test() {
-        System.out.println("DEBUG...");
+        Person person = peopleRepository.findById(4).orElse(null);
+        System.out.println("Получили человека");
+        System.out.println(person.getItems());
     }
 }

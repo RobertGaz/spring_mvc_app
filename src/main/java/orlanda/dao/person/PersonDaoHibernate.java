@@ -10,7 +10,7 @@ import orlanda.models.Person;
 import java.util.List;
 
 @Component
-public class HibernateDao implements PersonDao {
+public class PersonDaoHibernate implements PersonDao {
 
     @Autowired
     private SessionFactory sessionFactory;

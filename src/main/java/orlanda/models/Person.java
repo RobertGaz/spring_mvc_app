@@ -7,22 +7,6 @@ import java.util.List;
 @Entity
 @Table
 public class Person {
-    public Person() {
-
-    }
-
-    public Person(int id, String name, int age, String email) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.email = email;
-    }
-
-    public void copy(Person other) {
-        this.name = other.name;
-        this.age = other.age;
-        this.email = other.email;
-    }
 
     @Column(name="id")
     @Id
@@ -45,6 +29,23 @@ public class Person {
 
     @OneToMany(mappedBy = "owner")
     private List<Item> items;
+
+    public Person() {
+
+    }
+
+    public Person(int id, String name, int age, String email) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
+
+    public void copy(Person other) {
+        this.name = other.name;
+        this.age = other.age;
+        this.email = other.email;
+    }
 
     public int getAge() {
         return age;
@@ -84,5 +85,15 @@ public class Person {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

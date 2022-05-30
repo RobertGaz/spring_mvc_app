@@ -1,10 +1,10 @@
 create table person (
-    id integer not null auto_increment,
-    name varchar(20),
-    age integer,
-    email varchar(50),
-    primary key (id)
+                        id integer auto_increment primary key,
+                        name varchar(20) not null,
+                        age integer check (age > 0),
+                        email varchar(50) unique
 );
+
 
 insert into person (name, age, email)
 values  ('Robert', 23, 'my@gmail.com'),

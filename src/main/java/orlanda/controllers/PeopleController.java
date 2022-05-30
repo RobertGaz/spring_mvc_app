@@ -25,8 +25,6 @@ public class PeopleController {
     @GetMapping()
     public String index(Model model) {
 
-        itemsService.findByOwner(peopleService.getAll().get(1));
-        itemsService.findByName("AirPods");
         peopleService.test();
 
         model.addAttribute("people", peopleService.getAll());
