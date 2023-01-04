@@ -1,5 +1,5 @@
 # spring_mvc_app
 
-Basic Spring MVC application
+Basic tutorial for spring mvc
 
-Also here is branch with xml config in this repo
+See different folders for different configuration (xml, full java)
